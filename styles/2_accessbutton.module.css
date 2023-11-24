@@ -1,0 +1,17 @@
+.accessbuttonContainer
+{
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    margin-top: 50px;
+
+}
+.accessbutton
+{
+    font-weight: bold;
+    color: white;
+    background-color: #5d7b84;
+    padding: 20px;
+    cursor: pointer;
+}

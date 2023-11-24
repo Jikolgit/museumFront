@@ -1,0 +1,141 @@
+.bannerContainer
+{
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+.bannerBackground
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* background-image: url("../public/cap1.png"); */
+    
+}
+.bannerBackgroundpic1,.bannerBackgroundpic2,.bannerBackgroundpic3
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    z-index: 3;
+    transition: opacity 1s;
+}
+.bannerBackgroundpic2
+{
+    z-index: 2;
+}
+.bannerBackgroundpic3
+{
+    z-index: 1;
+}
+.BackgroundpicinVisble
+{
+    opacity: 0;
+}
+.bannerdescriptionMobile
+{
+    display: none;
+    position: relative;
+    width: 100%;
+    background-color: #222;
+    padding: 10px;
+    padding-bottom: 35px;
+    color: white;
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+.bannerdescription
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    padding: 10px;
+    z-index: 5;
+    background-color: #222222d1;
+    color: white;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.bannerdescriptionButtonCont
+{
+    
+    margin-top: 50px;
+}
+.bannerdescriptionButton
+{
+    font-weight: bold;
+    background-color: #5d7b84;
+    padding: 15px;
+    cursor: pointer;
+}
+.descriptionelem1container
+{
+
+}
+.descriptionelem2container
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    
+}
+.select
+{
+    width: 75px;
+    height: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgb(123, 123, 123);
+    cursor: pointer;
+}
+.selectActive
+{
+    background-color: white;
+}
+@media (max-width: 600px) 
+{
+    .bannerContainer
+    {
+        height: 400px;
+    }
+}
+
+@media (max-width: 500px) 
+{
+    .bannerContainer
+    {
+        height: auto;
+    }
+    .bannerBackground
+    {
+        height: 300px;
+        /* background-image: url("../public/cap1.png"); */
+        
+    }
+    .bannerdescriptionMobile
+    {
+        display: block;
+    }
+    .bannerdescription
+    {
+        display: none;
+    }
+}
+
+@media (max-width: 350px) 
+{
+    .bannerContainer
+    {
+        height: auto;
+    }
+}

@@ -1,0 +1,64 @@
+.footerContainer
+{
+    padding: 10px;
+    background-color: black;
+    width: 100%;
+
+
+}
+.footerContainerSection
+{
+
+    display: flex;
+    justify-content: space-around;
+}
+.footerSection
+{
+    color: white;
+}
+
+.sectionTitle
+{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.sectionElem
+{
+    font-size: 0.9rem;
+    color: rgb(176, 176, 176);
+    margin-top: 5px;
+    cursor: pointer;
+}
+.sectionElem:hover
+{
+    
+    color: rgb(255, 255, 255);
+}
+
+.footerEnding
+{
+    margin-top: 40px;
+    color: rgb(144, 144, 144);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.footerEndingLink
+{
+    font-size: 1rem;
+    color: rgb(0, 110, 255);
+}
+
+@media (max-width: 450px) 
+{
+    .footerContainerSection
+    {
+    
+        display: block;
+    }
+    .footerSection
+    {
+        margin-top: 25px;
+        margin-left: 25px;
+    }
+}
