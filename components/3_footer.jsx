@@ -26,24 +26,34 @@ function FooterSection(props)
     {
         content = <div className={styles.footerSection}>
                         <div className={styles.sectionTitle}>Lien Util</div>
-                        <div className={styles.sectionElem}>. Portfolio</div>
-                        <div className={styles.sectionElem}>. Webdu229</div>
+                        <div className={styles.sectionElem}>Portfolio</div>
+                        <div className={styles.sectionElem}>Webdu229</div>
                   </div>
     }
     else if(props.number == 2)
     {
         content = <div className={styles.footerSection}>
                         <div className={styles.sectionTitle}>Assisstance</div>
-                        <div className={styles.sectionElem}>. {'('}+229{')'} 90 39 73 97</div>
-                        <div className={styles.sectionElem}>. zbio234@gmail.com</div>
+                        <div className={styles.sectionElem}>{'('}+229{')'} 90 39 73 97</div>
+                        <div className={styles.sectionElem}>zbio234@gmail.com</div>
                   </div>
     }
     else if(props.number == 3)
     {
         content = <div className={styles.footerSection}>
                         <div className={styles.sectionTitle}>Suivez nous</div>
-                        <div className={styles.sectionElem}>. Tiktok</div>
-                        <div className={styles.sectionElem}>. Youtube</div>
+                        <div className={styles.sectionElem}>
+                                <div className={styles.sectionElemIcon}>
+                                        <img src='logo-tiktok.png' alt='icon'></img>
+                                </div>
+                                <div className={styles.sectionElemText}>Tiktok</div>
+                        </div>
+                        <div className={styles.sectionElem}>
+                                <div className={styles.sectionElemIcon}>
+                                        <img src='logo-youtube.png' alt='icon'></img>
+                                </div>
+                                <div className={styles.sectionElemText}>Youtube</div>
+                        </div>
                   </div>
     }
     return   content

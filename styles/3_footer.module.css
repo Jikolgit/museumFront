@@ -11,6 +11,7 @@
 
     display: flex;
     justify-content: space-around;
+    margin-top: 10px;
 }
 .footerSection
 {
@@ -26,7 +27,8 @@
 {
     font-size: 0.9rem;
     color: rgb(176, 176, 176);
-    margin-top: 5px;
+    margin-top: 10px;
+    display: flex;
     cursor: pointer;
 }
 .sectionElem:hover
@@ -48,7 +50,22 @@
     font-size: 1rem;
     color: rgb(0, 110, 255);
 }
-
+.sectionElemIcon
+{
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+.sectionElemIcon img
+{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.sectionElemText
+{
+    margin-left: 10px;
+}
 @media (max-width: 450px) 
 {
     .footerContainerSection

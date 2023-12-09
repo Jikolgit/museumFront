@@ -5,7 +5,13 @@ import styles from '@/styles/Home.module.css'
 import { Banner } from '@/components/1_banner';
 import { AccessButton } from '@/components/2_accessbutton';
 import { FooterComponent } from '@/components/3_footer';
+import { useEffect } from 'react';
 export default function Home() {
+
+  useEffect(()=>
+  {
+      console.log('prêt1')
+  },[])
   return (
     <>
       <Head>

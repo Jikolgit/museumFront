@@ -1,10 +1,14 @@
 import styles from '@/styles/2_accessbutton.module.css'
+import Link from 'next/link'
 
 export function AccessButton()
 {
     return <div className={styles.accessbuttonContainer} >
-                    <span className={styles.accessbutton}>
-                            V I S I T E R
-                    </span>
+        <Link href={"visite"} >
+                        <span className={styles.accessbutton}>
+                                        V I S I T E R
+                                </span>
+        </Link>
+
            </div>
 }

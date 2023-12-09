@@ -119,9 +119,8 @@
 }
 .mobileMenu1
 {
-    padding: 10px;
-    padding-bottom: 0;
-    border-bottom: 1px solid gray;
+    
+    border-bottom: 1px solid rgb(175, 175, 175);
 }
 .mobileMenu1Title
 {
@@ -163,9 +162,12 @@
 }
 .mobileMenu1ElemTitle
 {
-    
-    font-size: 1.3rem;
-    margin-left: 55px;
+    color: rgb(93, 93, 93);
+    background-color: rgb(243, 243, 243);
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding-left: 55px;
+    padding-top: 10px;
     height: 50px;
 
 }
