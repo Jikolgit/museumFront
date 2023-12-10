@@ -7,7 +7,7 @@ import { Museum } from '@/components/4_museum';
 import { Canvas } from '@react-three/fiber';
 import { Model } from '@/components/4_Musee';
 import gsap from 'gsap';
-import { CameraControls, OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { CameraControls, Loader, OrbitControls, PerspectiveCamera, useProgress } from '@react-three/drei';
 
 export let menuContexte = createContext(null);
 
@@ -15,13 +15,15 @@ export let menuContexte = createContext(null);
 export default function Home() {
 
     let menuOpen = useRef(false);
+    let {progress} = useProgress();
     let [MenuButtonCss,setMenuButtonCss] = useState([styles.Button_1,styles.Button_2,styles.Button_3,styles.Button_4,styles.Button_5]);
     let menuIconImg = useRef('menuicon.svg');
     let cameraIndexRef = useRef(0);
     let [cameraIndex,setcameraIndex] = useState(0); 
-
+    let [loadingOver,setLoadingOver] = useState(false);
     let [removeGlass,setRemoveGlass] = useState(false);
     let [rotateModel,setrotateModel] = useState(false);
+    let [showInfo_1,setshowInfo_1] = useState(false);
 
     let showMenu = ()=>
     {
@@ -120,13 +122,21 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <menuContexte.Provider value={{cameraIndex,setcameraIndex,removeGlass,setRemoveGlass,rotateModel,setrotateModel}}>
+      <menuContexte.Provider value={{cameraIndex,setcameraIndex,removeGlass,setRemoveGlass,rotateModel,setrotateModel,
+        loadingOver,setLoadingOver,showInfo_1,setshowInfo_1}}>
       <div className={`${styles.mainContainer}`}>
               <div className={`${styles.threejsContainer}`}>
                       <Canvas>
                           <Model />
-                          <CameraCompo actualIndex={cameraIndex} />
+                          <CameraCompo actualIndex={cameraIndex} />     
                       </Canvas>
+                      {
+                          !loadingOver?  <div className={`${styles.loaderContainer}`}>
+                                          {progress<100 ? <LoaderComponent state={"loading"}/> : <LoaderComponent state={"loaded"}/>}
+                                        </div> : null
+                      }
+                      
+                      <InfoContainer state={showInfo_1} />
                       <div onClick={showMenu}  className={`${styles.Button_0}`}>
                               <img className={`${styles.ButtonImg}`} src={menuIconImg.current} alt='menu'></img>
                       </div>
@@ -171,9 +181,15 @@ function CameraCompo(props)
 
         let setCampose = ()=>
         {
+       
+          orbitref.current.minDistance=8   //ZOMIN
+          // orbitref.current.maxDistance=1500
+          orbitref.current.maxAzimuthAngle = Math.PI*(1.4)+4;  //rotation droite
+          orbitref.current.minAzimuthAngle = Math.PI*(0.6)+3;
+          // orbitref.current.rotateSpeed = 0.2
+          orbitref.current.maxPolarAngle=1.7 // rotation verticale MAXI
             actualCamIndex.current = props.actualIndex;
-            // camref.current.position.set(cameraPosition[actualCamIndex.current].x,cameraPosition[actualCamIndex.current].y,cameraPosition[actualCamIndex.current].z)
-            // orbitref.current.target.set(cameraLook[actualCamIndex.current].x,cameraLook[actualCamIndex.current].y,cameraLook[actualCamIndex.current].z)
+
             
                   gsap.to(camref.current.position, 
                   { x: cameraPosition[actualCamIndex.current].x,
@@ -208,19 +224,100 @@ function CameraCompo(props)
           // orbitref.current.target.set(-42,5,-10)
           // console.log(orbitref.current.target)
           setCampose();
-              // camref.current.position.set(-25,8,25)
-              // orbitref.current.setTarget(-50,5,1)
-              // console.log(orbitref.current)
-            // position={[0,8,25]}
+
         },[props.actualIndex])
         return  <>
                    
                    
                    <PerspectiveCamera ref={camref} position={actualCamPos}   makeDefault   />
-                   <OrbitControls ref={orbitref} target={[-40.7,5,-26]} />
+                   <OrbitControls ref={orbitref} maxDistance={20} minDistance={8} 
+                   maxAzimuthAngle ={ Math.PI*(1.4)+4} minAzimuthAngle = {Math.PI*(0.6)+3} 
+                   maxPolarAngle={1.7} target={[-40.7,5,-26]} />
                    
                    
 
                 </>
 
+}
+
+function LoaderComponent(props)
+{
+      let content = useRef(null);
+      let showContent = useRef('props')
+      let valContext = useContext(menuContexte);
+      let [loaderContentCss,setLoaderContentCss] = useState(styles.loaderContent);
+      let enterMuseum = ()=>
+      {
+        
+        setLoaderContentCss(c=> c = `${styles.loaderContent} ${styles.loaderContent_fadeOut}`)
+      }
+      if(props.state == "loading")
+      {
+          content.current = <div className={styles.loaderContent} >
+                            EN COUR DE CHARGEMENT......
+                    </div>
+      }
+      else
+      {
+        content.current = <div className={loaderContentCss} >
+                          <div onClick={enterMuseum} className={styles.loaderContentEnterButton} >ENTRER</div>
+                  </div>
+      }
+      // if(showContent.current == "props")
+      // {}
+      // else
+      // {
+
+      // }
+      useEffect(()=>
+      {
+          if(loaderContentCss == `${styles.loaderContent} ${styles.loaderContent_fadeOut}`)
+          {
+            window.setTimeout(()=>{valContext.setLoadingOver(c=> c = true);},1100)
+          }
+          
+      },[loaderContentCss])
+      
+      return content.current;
+}
+
+
+
+function InfoContainer(props)
+{
+  let valContext = useContext(menuContexte);
+  let [infoCss,setInfoCss] = useState(styles.info_first_container);
+  useEffect(()=>
+  {
+    if(!props.state)
+    {
+      setInfoCss(c=> c = styles.info_first_container)
+    }
+    else
+    {
+      setInfoCss(c=> c = `${styles.info_first_container}  ${styles.info_container_visible}`)
+    }
+  },[props.state])
+  let showInfo_1 = ()=>
+  {
+    valContext.setshowInfo_1(c=> c = !valContext.showInfo_1)
+  }
+  return(
+    <div onClick={showInfo_1} className={infoCss} >
+        <div  className={styles.info_container}>
+                <div className={styles.info_container_0}>
+                    Trône d’apparat du roi Ghézo
+                </div>
+                <div className={styles.info_container_1}>
+                    Le roi s’installait sur ce trône pour des occasions exceptionnelles comme la cérémonie 
+                    d’Ato en hommage aux ancêtres royaux. Le trône était installé sur une estrade qui lui 
+                    permettait de surplomber la foule et de distribuer des présents à l'ensemble de ses 
+                    sujets : cauris, tissus, animaux, nourriture, armes…
+                </div>
+                <div className={styles.info_container_2}>
+                    source: https://tresorsroyaux.bj/tresor/1/trone-apparat-ghezo/
+                </div>
+        </div>
+    </div>
+  )
 }

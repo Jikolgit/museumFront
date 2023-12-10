@@ -19,6 +19,31 @@ export function Model(props) {
   let maskRef = useRef(null);
   let EnanblemaskRotation = useRef(false);
   const { nodes, materials } = useGLTF('/musee.glb');
+  let vertexShader = `
+ 
+ 
+  
+  
+ 
+  varying vec2 vUv;
+  
+  void main() {
+   
+    vec3 newPosition = position ;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+    vUv = uv;
+  }`;
+  let _fragmentShader = `
+  varying vec2 vUv;
+  
+  
+  
+    void main() {
+      
+      gl_FragColor = vec4(vUv,0.5,1.0);
+  
+    }  
+  `;
   let [plafondtxtSrc,wallGroundtxtSrc,maskTxtSrc,piedTxtSrc,tronetxtSrc,socletxtSrc,tamtamtxtSrc1,tamtamtxtSrc2] = 
   useTexture(["/plafondtxt.jpg",'/scenetxt2.jpg','/masktxt_new_1.jpg','/piedtxt.jpg','/troneTXT.jpg','/socletxt1.jpg','tamtxt.jpg','tamtxt_2.jpg']);
   let txtarray = [plafondtxtSrc,wallGroundtxtSrc,maskTxtSrc,piedTxtSrc,tronetxtSrc,socletxtSrc,tamtamtxtSrc1,tamtamtxtSrc2];
@@ -36,7 +61,7 @@ export function Model(props) {
   let plafondtxt = new THREE.MeshBasicMaterial({map:plafondtxtSrc});
   let wallgroundtxt = new THREE.MeshBasicMaterial({map:wallGroundtxtSrc});
   let masktxt = new THREE.MeshBasicMaterial({map:maskTxtSrc});
-  let fronttxt = new THREE.MeshBasicMaterial({color:"blue"});
+  let fronttxt = new THREE.ShaderMaterial({vertexShader:vertexShader,fragmentShader:_fragmentShader});
   let piedtxt = new THREE.MeshBasicMaterial({map:piedTxtSrc});
   let tronetxt = new THREE.MeshBasicMaterial({map:tronetxtSrc});
   let glassBartxt = new THREE.MeshBasicMaterial({map:tronetxtSrc});
@@ -50,7 +75,7 @@ export function Model(props) {
   // let plafondtxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
   // let wallgroundtxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
   // let masktxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
-  // let fronttxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
+  // let fronttxt = new THREE.ShaderMaterial({vertexShader:vertexShader,fragmentShader:_fragmentShader});
   // let piedtxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
   // let tronetxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
   // let glassBartxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
@@ -89,6 +114,10 @@ export function Model(props) {
           maskRef.current.rotation.y += 0.01;
         }
   })
+  let showInfo_1 = ()=>
+  {
+    valContext.setshowInfo_1(c=> c = !valContext.showInfo_1)
+  }
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.pied.geometry} material={piedtxt} position={[-41.033, 0.015, -27.952]} />
@@ -99,7 +128,7 @@ export function Model(props) {
       <mesh geometry={nodes.scene.geometry} material={wallgroundtxt} position={[0.01, 0.044, 0.044]} />
       <mesh geometry={nodes.pied2.geometry} material={socletxt} position={[-14.543, 1.078, -26.219]} />
       <mesh geometry={nodes.bar2.geometry} material={masktxt} position={[-14.585, 2.986, -20.437]} />
-      <mesh geometry={nodes.desc.geometry} material={socletxt} position={[-17.31, 2.712, -23.462]} rotation={[-0.41, -0.508, -0.208]} />
+      <mesh onClick={showInfo_1} geometry={nodes.desc.geometry} material={socletxt} position={[-17.31, 2.712, -23.462]} rotation={[-0.41, -0.508, -0.208]} />
       <mesh geometry={nodes.descselect.geometry} material={deselectTxt} position={[-17.31, 2.712, -23.462]} rotation={[-0.41, -0.508, -0.208]} />
       <mesh geometry={nodes.tamtam_1.geometry} material={tamtamtxt_1} position={[13.529, 2.612, -22.799]} />
       <mesh geometry={nodes.tamtam_2.geometry} material={tamtamtxt_2} position={[19.813, 5.632, -23.939]} scale={1.413} />
@@ -108,7 +137,7 @@ export function Model(props) {
         <mesh geometry={nodes.cap_new.geometry} material={masktxt} position={[0.007, 0.359, 0.019]} />
         <mesh geometry={nodes.ears_new.geometry} material={masktxt} position={[0.006, 0.03, -0.285]} />
         <mesh geometry={nodes.face_new.geometry} material={masktxt} position={[0.006, -0.198, 0.095]} />
-        <mesh geometry={nodes.front_new.geometry} material={fronttxt} position={[0.011, 0.53, 0.1]} rotation={[-0.083, 0, 0]} scale={0.797} />
+        <mesh  geometry={nodes.front_new.geometry} material={fronttxt} position={[0.011, 0.53, 0.1]} rotation={[-0.083, 0, 0]} scale={0.797} />
       </mesh>
       <mesh geometry={nodes.plafond.geometry} material={plafondtxt} position={[-0.127, 31.974, 0.044]} />
       
