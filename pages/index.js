@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(()=>
   {
-      console.log('prêt1')
+    
   },[])
   return (
     <>

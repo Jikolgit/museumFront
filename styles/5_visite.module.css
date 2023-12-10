@@ -5,5 +5,76 @@
     top: 0;
     width: 100%;
     height: 100%;
+
     
+}
+
+.threejsContainer
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 600px;
+    margin: 0 auto;
+    background-color: blue;
+}
+
+.Button_0,.Button_1,.Button_2,.Button_3,.Button_4,.Button_5
+{
+    box-sizing: border-box;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    background-color: black;
+    z-index: 3;
+    right: 20px;
+    top: 20px;
+    border: 2px solid white;
+    transition: top 0.3s, opacity 0.3s;
+    cursor: pointer;
+}
+.Button_1,.Button_2,.Button_3,.Button_4,.Button_5
+{
+    background-color: black;
+    opacity: 0;
+    z-index: 2;
+}
+.Button_1_open
+{
+    top: 100px;
+    opacity: 1;
+}
+.Button_2_open
+{
+    top: 180px;
+    opacity: 1;
+    
+}
+.Button_3_open
+{
+    top: 260px;
+    opacity: 1;
+    
+}
+.Button_4_open
+{
+    top: 340px;
+    opacity: 1;
+    
+}
+.Button_5_open
+{
+    top: 420px;
+    opacity: 1;    
+}
+.Button_disabled
+{
+    opacity: 0.3;    
+}
+.ButtonImg
+{
+    width: 100%;
+    height: 100%;
 }
