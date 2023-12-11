@@ -57,33 +57,33 @@ export function Model(props) {
   }
   const hdrtexture = useLoader(RGBELoader, "/hdr3.hdr");
   hdrtexture.mapping = THREE.EquirectangularReflectionMapping;
-  let glasstxt = new THREE.MeshPhysicalMaterial({transmission:1,roughness:0,metalness:0,ior:1,envMap:hdrtexture});
-  let maskCubetxt = new THREE.MeshBasicMaterial({visible:false,transparent:true});
-  let plafondtxt = new THREE.MeshBasicMaterial({map:plafondtxtSrc});
-  let wallgroundtxt = new THREE.MeshBasicMaterial({map:wallGroundtxtSrc});
-  let masktxt = new THREE.MeshBasicMaterial({map:maskTxtSrc});
-  let fronttxt = new THREE.ShaderMaterial({vertexShader:vertexShader,fragmentShader:_fragmentShader});
-  let piedtxt = new THREE.MeshBasicMaterial({map:piedTxtSrc});
-  let tronetxt = new THREE.MeshBasicMaterial({map:tronetxtSrc});
-  let glassBartxt = new THREE.MeshBasicMaterial({map:tronetxtSrc});
-  let socletxt = new THREE.MeshBasicMaterial({map:socletxtSrc});
+  let glasstxt = useRef(new THREE.MeshPhysicalMaterial({transmission:1,roughness:0,metalness:0,ior:1,envMap:hdrtexture}));
+  let maskCubetxt = useRef(new THREE.MeshBasicMaterial({visible:false,transparent:true}));
+  let plafondtxt = useRef(new THREE.MeshBasicMaterial({map:plafondtxtSrc}));
+  let wallgroundtxt = useRef(new THREE.MeshBasicMaterial({map:wallGroundtxtSrc}));
+  let masktxt = useRef(new THREE.MeshBasicMaterial({map:maskTxtSrc}));
+  let fronttxt = useRef(new THREE.ShaderMaterial({vertexShader:vertexShader,fragmentShader:_fragmentShader}));
+  let piedtxt = useRef(new THREE.MeshBasicMaterial({map:piedTxtSrc}));
+  let tronetxt = useRef(new THREE.MeshBasicMaterial({map:tronetxtSrc}));
+  let glassBartxt = useRef(new THREE.MeshBasicMaterial({map:tronetxtSrc}));
+  let socletxt = useRef(new THREE.MeshBasicMaterial({map:socletxtSrc}));
   let deselectTxt = useRef(new THREE.ShaderMaterial({ side:THREE.BackSide, vertexShader:vertexShader2,fragmentShader:_fragmentShader2,uniforms:uniform2.current}))
-  let tamtamtxt_1 = new THREE.MeshBasicMaterial({map:tamtamtxtSrc1});
-  let tamtamtxt_2 = new THREE.MeshBasicMaterial({map:tamtamtxtSrc2});
+  let tamtamtxt_1 = useRef(new THREE.MeshBasicMaterial({map:tamtamtxtSrc1}));
+  let tamtamtxt_2 = useRef(new THREE.MeshBasicMaterial({map:tamtamtxtSrc2}));
 
-  // let glasstxt = new THREE.MeshPhysicalMaterial({color:'white',wireframe:true});
-  // let maskCubetxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
-  // let plafondtxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
-  // let wallgroundtxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
-  // let masktxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
-  // let fronttxt = new THREE.ShaderMaterial({vertexShader:vertexShader,fragmentShader:_fragmentShader});
-  // let piedtxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
-  // let tronetxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
-  // let glassBartxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
-  // let socletxt = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
+  // let glasstxt = useRef(new THREE.MeshPhysicalMaterial({color:'white',wireframe:true}));
+  // let maskCubetxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let plafondtxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let wallgroundtxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let masktxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let fronttxt = useRef(new THREE.ShaderMaterial({vertexShader:vertexShader,fragmentShader:_fragmentShader}));
+  // let piedtxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let tronetxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let glassBartxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let socletxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
   // let deselectTxt = useRef(new THREE.ShaderMaterial({ side:THREE.BackSide, vertexShader:vertexShader2,fragmentShader:_fragmentShader2,uniforms:uniform2.current}))
-  // let tamtamtxt_1 = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
-  // let tamtamtxt_2 = new THREE.MeshBasicMaterial({color:'white',wireframe:true});
+  // let tamtamtxt_1 = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let tamtamtxt_2 = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
   useEffect(()=>
   {
    
@@ -123,26 +123,26 @@ export function Model(props) {
   }
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.pied.geometry} material={piedtxt} position={[-41.033, 0.015, -27.952]} />
-      <mesh geometry={nodes.trone.geometry} material={tronetxt} position={[-14.503, 2.033, -26.188]} />
-      <mesh ref={glassRef} geometry={nodes.glass.geometry} material={glasstxt} position={[-41.179, 6.567, -28.002]} />
-      <mesh geometry={nodes.bar.geometry} material={masktxt} position={[-41.049, 2.986, -25.205]} />
-      <mesh ref={glassBoxRef} geometry={nodes.glassbar.geometry} material={glassBartxt} position={[-41.029, 6.293, -27.971]} />
-      <mesh geometry={nodes.scene.geometry} material={wallgroundtxt} position={[0.01, 0.044, 0.044]} />
-      <mesh geometry={nodes.pied2.geometry} material={socletxt} position={[-14.543, 1.078, -26.219]} />
-      <mesh geometry={nodes.bar2.geometry} material={masktxt} position={[-14.585, 2.986, -20.437]} />
+      <mesh geometry={nodes.pied.geometry} material={piedtxt.current} position={[-41.033, 0.015, -27.952]} />
+      <mesh geometry={nodes.trone.geometry} material={tronetxt.current} position={[-14.503, 2.033, -26.188]} />
+      <mesh ref={glassRef} geometry={nodes.glass.geometry} material={glasstxt.current} position={[-41.179, 6.567, -28.002]} />
+      <mesh geometry={nodes.bar.geometry} material={masktxt.current} position={[-41.049, 2.986, -25.205]} />
+      <mesh ref={glassBoxRef} geometry={nodes.glassbar.geometry} material={glassBartxt.current} position={[-41.029, 6.293, -27.971]} />
+      <mesh geometry={nodes.scene.geometry} material={wallgroundtxt.current} position={[0.01, 0.044, 0.044]} />
+      <mesh geometry={nodes.pied2.geometry} material={socletxt.current} position={[-14.543, 1.078, -26.219]} />
+      <mesh geometry={nodes.bar2.geometry} material={masktxt.current} position={[-14.585, 2.986, -20.437]} />
       <mesh onClick={showInfo_1} geometry={nodes.desc.geometry} material={socletxt} position={[-17.31, 2.712, -23.462]} rotation={[-0.41, -0.508, -0.208]} />
       <mesh geometry={nodes.descselect.geometry} material={deselectTxt.current} position={[-17.31, 2.712, -23.462]} rotation={[-0.41, -0.508, -0.208]} />
-      <mesh geometry={nodes.tamtam_1.geometry} material={tamtamtxt_1} position={[13.529, 2.612, -22.799]} />
-      <mesh geometry={nodes.tamtam_2.geometry} material={tamtamtxt_2} position={[19.813, 5.632, -23.939]} scale={1.413} />
-      <mesh geometry={nodes.tamtam_2_1.geometry} material={tamtamtxt_2} position={[7.293, 4.327, -26.362]} rotation={[0.972, -0.358, 0.475]} scale={1.413} />
-      <mesh ref={maskRef} geometry={nodes.maskCube.geometry} material={maskCubetxt} position={[-41.034, 6.114, -27.974]}>
-        <mesh geometry={nodes.cap_new.geometry} material={masktxt} position={[0.007, 0.359, 0.019]} />
-        <mesh geometry={nodes.ears_new.geometry} material={masktxt} position={[0.006, 0.03, -0.285]} />
-        <mesh geometry={nodes.face_new.geometry} material={masktxt} position={[0.006, -0.198, 0.095]} />
-        <mesh  geometry={nodes.front_new.geometry} material={fronttxt} position={[0.011, 0.53, 0.1]} rotation={[-0.083, 0, 0]} scale={0.797} />
+      <mesh geometry={nodes.tamtam_1.geometry} material={tamtamtxt_1.current} position={[13.529, 2.612, -22.799]} />
+      <mesh geometry={nodes.tamtam_2.geometry} material={tamtamtxt_2.current} position={[19.813, 5.632, -23.939]} scale={1.413} />
+      <mesh geometry={nodes.tamtam_2_1.geometry} material={tamtamtxt_2.current} position={[7.293, 4.327, -26.362]} rotation={[0.972, -0.358, 0.475]} scale={1.413} />
+      <mesh ref={maskRef} geometry={nodes.maskCube.geometry} material={maskCubetxt.current} position={[-41.034, 6.114, -27.974]}>
+        <mesh geometry={nodes.cap_new.geometry} material={masktxt.current} position={[0.007, 0.359, 0.019]} />
+        <mesh geometry={nodes.ears_new.geometry} material={masktxt.current} position={[0.006, 0.03, -0.285]} />
+        <mesh geometry={nodes.face_new.geometry} material={masktxt.current} position={[0.006, -0.198, 0.095]} />
+        <mesh  geometry={nodes.front_new.geometry} material={fronttxt.current} position={[0.011, 0.53, 0.1]} rotation={[-0.083, 0, 0]} scale={0.797} />
       </mesh>
-      <mesh geometry={nodes.plafond.geometry} material={plafondtxt} position={[-0.127, 31.974, 0.044]} />
+      <mesh geometry={nodes.plafond.geometry} material={plafondtxt.current} position={[-0.127, 31.974, 0.044]} />
       
     </group>
   )
