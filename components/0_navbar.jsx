@@ -36,10 +36,13 @@ export function NavBar()
             <header className={styles.navBarContainer} >
                     <div className={styles.navBar}>
                             <div className={styles.title}>
-                                <div className={styles.title_text}>
+                                <div className={styles.titlelogo} >
+                                    <img className={styles.titlelogoimg} src='websitelogo.png' alt='logo' ></img>
+                                </div>
+                                {/* <div className={styles.title_text}>
                                         <span className={styles.title_text_1}></span>
                                         <span className={styles.title_text_2}><br/> </span>
-                                </div>
+                                </div> */}
                             </div>
                             <div className={styles.menu}>
                                   <div className={styles.picdiv}>
