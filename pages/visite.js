@@ -215,14 +215,7 @@ function CameraCompo(props)
         
         useEffect(()=>
         {
-          // if(!activateOnce.current)
-          // {
-          //     activateOnce.current = true;
-             
-          // }      
-          
-          // orbitref.current.target.set(-42,5,-10)
-          // console.log(orbitref.current.target)
+
           setCampose();
 
         },[props.actualIndex])
