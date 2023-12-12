@@ -8,6 +8,7 @@ import { Canvas } from '@react-three/fiber';
 import { Model } from '@/components/4_Musee';
 import gsap from 'gsap';
 import { CameraControls, Loader, OrbitControls, PerspectiveCamera, useProgress } from '@react-three/drei';
+import { TransitionPage } from '@/components/pagetransition';
 
 export let menuContexte = createContext(null);
 
@@ -162,6 +163,7 @@ export default function Home() {
               
       </div>
       </menuContexte.Provider>
+      <TransitionPage />
 
     </>
   )

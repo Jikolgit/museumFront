@@ -55,7 +55,7 @@ export function Banner()
         if(!devOnce.current)
         {
             devOnce.current = true;
-            console.log('lance');
+          
             switchBanner();
         }
 

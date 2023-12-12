@@ -47,50 +47,50 @@ export function Model(props) {
   //   }  
   // `;
   
-  // let [plafondtxtSrc,wallGroundtxtSrc,maskTxtSrc,piedTxtSrc,tronetxtSrc,socletxtSrc,tamtamtxtSrc1,tamtamtxtSrc2] = 
-  // useTexture(["/plafondtxt.jpg",'/scenetxt2.jpg','/masktxt_new_1.jpg','/piedtxt.jpg','/troneTXT.jpg','/socletxt1.jpg','tamtxt.jpg','tamtxt_2.jpg']);
-  // let txtarray = [plafondtxtSrc,wallGroundtxtSrc,maskTxtSrc,piedTxtSrc,tronetxtSrc,socletxtSrc,tamtamtxtSrc1,tamtamtxtSrc2];
-  // for(let i =0;i< txtarray.length;i++)
-  // {
-  //   txtarray[i].flipY = false;
-  //   txtarray[i].colorSpace = THREE.SRGBColorSpace; 
-  //   txtarray[i].minFilter = THREE.LinearFilter;
-  //   txtarray[i].magFilter = THREE.LinearFilter;
-  // }
-  // const hdrtexture = useLoader(RGBELoader, "/hdr3.hdr");
-  // hdrtexture.mapping = THREE.EquirectangularReflectionMapping;
-  // let glasstxt = useRef(new THREE.MeshPhysicalMaterial({transmission:1,roughness:0,metalness:0,ior:1,envMap:hdrtexture}));
-  // let maskCubetxt = useRef(new THREE.MeshBasicMaterial({visible:false,transparent:true}));
-  // let plafondtxt = useRef(new THREE.MeshBasicMaterial({map:plafondtxtSrc}));
-  // let wallgroundtxt = useRef(new THREE.MeshBasicMaterial({map:wallGroundtxtSrc}));
-  // let masktxt = useRef(new THREE.MeshBasicMaterial({map:maskTxtSrc}));
-  // let fronttxt = useRef(new THREE.ShaderMaterial({vertexShader:vertexShader,fragmentShader:_fragmentShader}));
-  // let piedtxt = useRef(new THREE.MeshBasicMaterial({map:piedTxtSrc}));
-  // let tronetxt = useRef(new THREE.MeshBasicMaterial({map:tronetxtSrc}));
-  // let glassBartxt = useRef(new THREE.MeshBasicMaterial({map:tronetxtSrc}));
-  // let socletxt = useRef(new THREE.MeshBasicMaterial({map:socletxtSrc}));
-  // let descTxt = useRef(new THREE.MeshBasicMaterial({map:socletxtSrc}));
-  // let deselectTxt = useRef(new THREE.ShaderMaterial({ side:THREE.BackSide, vertexShader:vertexShader2,fragmentShader:_fragmentShader2,uniforms:uniform2.current}))
-  // let tamtamtxt_1 = useRef(new THREE.MeshBasicMaterial({map:tamtamtxtSrc1}));
-  // let tamtamtxt_2 = useRef(new THREE.MeshBasicMaterial({map:tamtamtxtSrc2}));
-
-  let glasstxt = useRef(new THREE.MeshPhysicalMaterial({color:'white',wireframe:true}));
-  let maskCubetxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
-  let plafondtxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
-  let wallgroundtxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
-  let masktxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  let [plafondtxtSrc,wallGroundtxtSrc,maskTxtSrc,piedTxtSrc,tronetxtSrc,socletxtSrc,tamtamtxtSrc1,tamtamtxtSrc2] = 
+  useTexture(["/plafondtxt.jpg",'/scenetxt2.jpg','/masktxt_new_1.jpg','/piedtxt.jpg','/troneTXT.jpg','/socletxt1.jpg','tamtxt.jpg','tamtxt_2.jpg']);
+  let txtarray = [plafondtxtSrc,wallGroundtxtSrc,maskTxtSrc,piedTxtSrc,tronetxtSrc,socletxtSrc,tamtamtxtSrc1,tamtamtxtSrc2];
+  for(let i =0;i< txtarray.length;i++)
+  {
+    txtarray[i].flipY = false;
+    txtarray[i].colorSpace = THREE.SRGBColorSpace; 
+    txtarray[i].minFilter = THREE.LinearFilter;
+    txtarray[i].magFilter = THREE.LinearFilter;
+  }
+  const hdrtexture = useLoader(RGBELoader, "/hdr3.hdr");
+  hdrtexture.mapping = THREE.EquirectangularReflectionMapping;
+  let glasstxt = useRef(new THREE.MeshPhysicalMaterial({transmission:1,roughness:0,metalness:0,ior:1,envMap:hdrtexture}));
+  let maskCubetxt = useRef(new THREE.MeshBasicMaterial({visible:false,transparent:true}));
+  let plafondtxt = useRef(new THREE.MeshBasicMaterial({map:plafondtxtSrc}));
+  let wallgroundtxt = useRef(new THREE.MeshBasicMaterial({map:wallGroundtxtSrc}));
+  let masktxt = useRef(new THREE.MeshBasicMaterial({map:maskTxtSrc}));
   let fronttxt = useRef(new THREE.ShaderMaterial({vertexShader:vertexShader,fragmentShader:_fragmentShader}));
-  let piedtxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
-  let tronetxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
-  let glassBartxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
-  let socletxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
-  let descTxt = useRef(new THREE.MeshBasicMaterial({color:'yellow',wireframe:true}));
+  let piedtxt = useRef(new THREE.MeshBasicMaterial({map:piedTxtSrc}));
+  let tronetxt = useRef(new THREE.MeshBasicMaterial({map:tronetxtSrc}));
+  let glassBartxt = useRef(new THREE.MeshBasicMaterial({map:tronetxtSrc}));
+  let socletxt = useRef(new THREE.MeshBasicMaterial({map:socletxtSrc}));
+  let descTxt = useRef(new THREE.MeshBasicMaterial({map:socletxtSrc}));
   let deselectTxt = useRef(new THREE.ShaderMaterial({ side:THREE.BackSide, vertexShader:vertexShader2,fragmentShader:_fragmentShader2,uniforms:uniform2.current}))
-  let tamtamtxt_1 = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
-  let tamtamtxt_2 = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  let tamtamtxt_1 = useRef(new THREE.MeshBasicMaterial({map:tamtamtxtSrc1}));
+  let tamtamtxt_2 = useRef(new THREE.MeshBasicMaterial({map:tamtamtxtSrc2}));
+
+  // let glasstxt = useRef(new THREE.MeshPhysicalMaterial({color:'white',wireframe:true}));
+  // let maskCubetxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let plafondtxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let wallgroundtxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let masktxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let fronttxt = useRef(new THREE.ShaderMaterial({vertexShader:vertexShader,fragmentShader:_fragmentShader}));
+  // let piedtxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let tronetxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let glassBartxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let socletxt = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let descTxt = useRef(new THREE.MeshBasicMaterial({color:'yellow',wireframe:true}));
+  // let deselectTxt = useRef(new THREE.ShaderMaterial({ side:THREE.BackSide, vertexShader:vertexShader2,fragmentShader:_fragmentShader2,uniforms:uniform2.current}))
+  // let tamtamtxt_1 = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
+  // let tamtamtxt_2 = useRef(new THREE.MeshBasicMaterial({color:'white',wireframe:true}));
   useEffect(()=>
   {
-    console.log(descRef.current)
+   
     if(valContext.removeGlass)
     {
           glassBoxRef.current.material.visible = false;

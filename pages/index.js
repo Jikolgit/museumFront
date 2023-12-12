@@ -6,6 +6,7 @@ import { Banner } from '@/components/1_banner';
 import { AccessButton } from '@/components/2_accessbutton';
 import { FooterComponent } from '@/components/3_footer';
 import { useEffect } from 'react';
+import { TransitionPage } from '@/components/pagetransition';
 export default function Home() {
 
   useEffect(()=>
@@ -29,6 +30,7 @@ export default function Home() {
       <footer className={`${styles.footer}`}>
             <FooterComponent />
       </footer>
+      <TransitionPage />
     </>
   )
 }
