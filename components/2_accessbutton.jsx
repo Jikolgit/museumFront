@@ -9,7 +9,8 @@ export function AccessButton()
     let accessButtonTest = useRef(<div className={styles.buttonLoading} ></div>) ;
     let gotoPage = ()=>
     {
-        setaccessButtonContent(c=> c = accessButtonTest.current )
+        setaccessButtonContent(c=> c = accessButtonTest.current );
+        window.scrollTo(0,0);
         _router.push('visite');
     }
     return <div className={styles.accessbuttonContainer} >
