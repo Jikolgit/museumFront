@@ -11,7 +11,7 @@ export function FooterComponent()
                     </div>
 
                     <div className={styles.footerEnding}>
-                            <div>Réalisé par <span className={styles.footerEndingLink}>Abdel BIO</span> </div>
+                            <div>Réalisé par <a className={styles.footerEndingLink} href="https://abdelbio.vercel.app/" >Abdel BIO</a> </div>
                             <div>Copyright. Tout droit réservé</div>
                     </div>
            </div>
@@ -22,12 +22,16 @@ function FooterSection(props)
 {
     let content = null;
 
+    let onpenLink = ()=>
+    {
+        window.open('https://www.tiktok.com/@webdu229','_blank')
+    }
     if(props.number == 1)
     {
         content = <div className={styles.footerSection}>
-                        <div className={styles.sectionTitle}>Lien Util</div>
-                        <div className={styles.sectionElem}>Portfolio</div>
-                        <div className={styles.sectionElem}>Webdu229</div>
+                        <div className={styles.sectionTitle}>Liens utiles</div>
+                        <div className={styles.sectionElem}><a  className={styles.sectionElemLink} href="https://abdelbio.vercel.app/">Portfolio</a> </div>
+                        {/* <div className={styles.sectionElem}>Webdu229</div> */}
                   </div>
     }
     else if(props.number == 2)
@@ -42,18 +46,18 @@ function FooterSection(props)
     {
         content = <div className={styles.footerSection}>
                         <div className={styles.sectionTitle}>Suivez nous</div>
-                        <div className={styles.sectionElem}>
+                        <div onClick={onpenLink} className={styles.sectionElem}>
                                 <div className={styles.sectionElemIcon}>
                                         <img src='logo-tiktok.png' alt='icon'></img>
                                 </div>
                                 <div className={styles.sectionElemText}>Tiktok</div>
                         </div>
-                        <div className={styles.sectionElem}>
+                        {/* <div className={styles.sectionElem}>
                                 <div className={styles.sectionElemIcon}>
                                         <img src='logo-youtube.png' alt='icon'></img>
                                 </div>
                                 <div className={styles.sectionElemText}>Youtube</div>
-                        </div>
+                        </div> */}
                   </div>
     }
     return   content

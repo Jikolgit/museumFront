@@ -1,9 +1,9 @@
 import styles from '@/styles/0_navBar.module.css'
-import { useEffect, useRef, useState } from 'react'
-
+import { useContext, useEffect, useRef, useState } from 'react'
+import { pageContexte } from '@/pages';
 export function NavBar()
 {
-
+    let valContexte = useContext(pageContexte);
     let [chevronIconLink,setchevronIconLink] = useState(styles.mobilemenuContainer);
     let normalMenuId = useRef(1);
     let openMenuState = useRef(false);
@@ -46,10 +46,12 @@ export function NavBar()
                             </div>
                             <div className={styles.menu}>
                                   <div className={styles.picdiv}>
-                                         <img onClick={()=>{openNormalMenu(1)}} className={styles.menupic1} src='menu1.png' alt='pic1'></img>
+                                         {/* <img onClick={()=>{openNormalMenu(1)}} className={styles.menupic1} src='menu1.png' alt='pic1'></img> */}
+                                         <img onClick={valContexte.showPopUpFunc} className={styles.menupic1} src='menu1.png' alt='pic1'></img>
                                   </div>
                                   <div className={styles.picdiv}>
-                                        <img onClick={()=>{openNormalMenu(2)}} className={styles.menupic2} src='menu2.png' alt='pic2'></img>
+                                        {/* <img onClick={()=>{openNormalMenu(2)}} className={styles.menupic2} src='menu2.png' alt='pic2'></img> */}
+                                        <img onClick={valContexte.showPopUpFunc} className={styles.menupic2} src='menu2.png' alt='pic2'></img>
                                   </div>
                                   
                                   
@@ -77,7 +79,7 @@ export function NavBar()
 
 function SubMenu(props)
 {
-    
+    let valContexte = useContext(pageContexte);
     let [chevronIconLink,setchevronIconLink] = useState('chevron-down.png');
     let [mobileMenu1ElemCss,setmobileMenu1Css] = useState(styles.mobileMenu1Elem);
     let subeMenuOpen1 = useRef(false);
@@ -118,7 +120,7 @@ function SubMenu(props)
     }
     return(
         <div className={styles.mobileMenu1}>
-                            <div className={styles.mobileMenu1Title} onClick={openSubMenu}>
+                            <div className={styles.mobileMenu1Title} onClick={valContexte.showPopUpFunc}>
                                     <div className={styles.menuLeft}  >
                                                 <div className={styles.leftmenuicon} ><img className={iconCss.current} src={props.icon} alt='pic1'></img></div> 
                                                 <div className={styles.mobilemenutitle} >{props.title} </div> 

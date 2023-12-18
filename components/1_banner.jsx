@@ -1,5 +1,6 @@
 import styles from '@/styles/1_banner.module.css'
 import { useEffect, useRef, useState } from 'react'
+import { AccessButton } from './2_accessbutton';
 export function Banner()
 {
     let devOnce = useRef(false);
@@ -37,7 +38,7 @@ export function Banner()
             }
             else if(picIndex.current == 3)
             {
-                
+                 
                 setpic2css(`${styles.bannerBackgroundpic2} ${styles.BackgroundpicinVisble} `);
                 setselectorCss1(c => c=`${styles.select}`)
                 setselectorCss3(c => c=`${styles.select} ${styles.selectActive}`)
@@ -48,7 +49,7 @@ export function Banner()
                 picIndex.current = 0;
             }
             
-        },3500)
+        },5500)
     }
     useEffect(()=>
     {
@@ -72,9 +73,10 @@ export function Banner()
                                             Musée du 229 vous offre une vue 3D de quelques oeuvres d'arts du patrimoine culturel Béninois
                                     </p>
                                     <div className={styles.bannerdescriptionButtonCont}>
-                                                <span className={styles.bannerdescriptionButton}>
+                                                {/* <span className={styles.bannerdescriptionButton}>
                                                     EN SAVOIR PLUS
-                                                </span>
+                                                </span> */}
+                                                <AccessButton />
                                     </div>
                            </div>
                            <div className={styles.descriptionelem2container}>
@@ -92,12 +94,13 @@ export function Banner()
                             </div>
                            <div className={styles.descriptionelem1container}>
                                     <p>
-                                            Musée du 229 vous offre une vue 3D de quelques oeuvres d'arts du patrimoine culturel Béninois
+                                            Musée du 229 vous offre une exposition virtuelle 3D de quelques oeuvres d'arts du patrimoine culturel Béninois
                                     </p>
                                     <div className={styles.bannerdescriptionButtonCont}>
-                                                <span className={styles.bannerdescriptionButton}>
+                                                {/* <span className={styles.bannerdescriptionButton}>
                                                     EN SAVOIR PLUS
-                                                </span>
+                                                </span> */}
+                                                <AccessButton />
                                     </div>
                            </div>
 
