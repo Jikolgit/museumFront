@@ -90,7 +90,7 @@ export function SideMenu2(props)
           ButtonCssCopy[0] =`${styles.Button_1} ${styles.Button_1_open}`;
           ButtonCssCopy[1] =`${styles.Button_2} ${styles.Button_2_open}`;
           ButtonCssCopy[2] =`${styles.Button_3} ${styles.Button_3_open}`;
-          ButtonCssCopy[3] =`${styles.Button_4} ${styles.Button_4_open}`;
+          // ButtonCssCopy[3] =`${styles.Button_4} ${styles.Button_4_open}`;
           
           menuIconImg.current = 'close.svg';
         }
@@ -99,7 +99,7 @@ export function SideMenu2(props)
           ButtonCssCopy[0] =`${styles.Button_1}`;
           ButtonCssCopy[1] =`${styles.Button_2}`;
           ButtonCssCopy[2] =`${styles.Button_3}`;
-          ButtonCssCopy[3] =`${styles.Button_4}`;
+          // ButtonCssCopy[3] =`${styles.Button_4}`;
           
           menuIconImg.current = 'menuicon.svg';
         }
@@ -117,18 +117,18 @@ export function SideMenu2(props)
                 <div onClick={showMenu}  className={`${styles.Button_0}`}>
                         <img className={`${styles.ButtonImg}`} src={menuIconImg.current} alt='menu'></img>
                 </div>
-                <div onClick={valContexte.removeGlassFunc}  className={valContexte.menuButtonCss[0]}>
+                {/* <div onClick={valContexte.removeGlassFunc}  className={valContexte.menuButtonCss[0]}>
                         <img className={`${styles.ButtonImg}`} src='eye.svg' alt='remove Glass'></img>
-                </div>
-                <div onClick={()=>{valContexte._showSubMenu(true)}}  className={valContexte.menuButtonCss[1]}>
+                </div> */}
+                <div onClick={()=>{valContexte._showSubMenu(true)}}  className={valContexte.menuButtonCss[0]}>
                         {/* <Link href={"/"}> */}
                                 <img className={`${styles.ButtonImg}`} src='home.svg' alt='Home'></img>
                         {/* </Link> */}
                 </div>
-                <div onClick={()=>{valContexte.moveCam("right")}}  className={valContexte.menuButtonCss[2]}>
+                <div onClick={()=>{valContexte.moveCam("right")}}  className={valContexte.menuButtonCss[1]}>
                         <img className={`${styles.ButtonImg}`} src='arrow-right.svg' alt='menu'></img>
                 </div>
-                <div onClick={()=>{valContexte.moveCam("left")}}  className={valContexte.menuButtonCss[3]}>
+                <div onClick={()=>{valContexte.moveCam("left")}}  className={valContexte.menuButtonCss[2]}>
                         <img className={`${styles.ButtonImg}`} src='arrow-left.svg' alt='menu'></img>
                 </div>
     
@@ -212,19 +212,19 @@ export function SubMenu(props)
 
     let switchexpo = (number)=>
     {
-      valContext.showPopUpFunc()
-      // if(number == 1)
-      // {
-      //   valContext.obJectExpo.current = 1
-      // }
-      // else if(number == 2)
-      // {
-      //   valContext.obJectExpo.current = 2
-      // }
-      // valContext.setExposition(c => c = number);
-      // valContext.setExpotransition(c => c = true);
-      // valContext._showSubMenu(false);
-      // valContext.setshowSideMenuState(c => c = true)
+//       valContext.showPopUpFunc()
+      if(number == 1)
+      {
+        valContext.obJectExpo.current = 1
+      }
+      else if(number == 2)
+      {
+        valContext.obJectExpo.current = 2
+      }
+      valContext.setExposition(c => c = number);
+      valContext.setExpotransition(c => c = true);
+      valContext._showSubMenu(false);
+      valContext.setshowSideMenuState(c => c = true)
     }
     
     return( 
